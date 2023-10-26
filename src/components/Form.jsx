@@ -19,9 +19,11 @@ function Form(){
         <label htmlFor="eventTime">Event time:*</label><br/>
         <input type="time" required /><br/>
 
+
+
         {/* NOTES */}
         <label htmlFor="notes">Notes:</label><br/>
-        <textarea name="notes" id="event-notes" cols="30" rows="5" placeholder="Enter text here"></textarea>
+        <textarea name="notes" id="event-notes" cols="35" rows="5" placeholder="Enter text here"></textarea>
 
       </form>
     </div>
