@@ -42,6 +42,7 @@ html, body{
 
 #banner h3{
   font-size: 1.5rem;
+  margin-top: -2rem;
 }
 
 #banner p {
@@ -53,8 +54,8 @@ html, body{
 }
 
 .banner-btn{
-  border: 1px solid white;
-  background-color: white;
+  border: 1px solid $light-beige;
+  background-color: $light-beige;
   padding: 1rem 1rem;
   border-radius: 10px;
   font-size: 1.2rem;

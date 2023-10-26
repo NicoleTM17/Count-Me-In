@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 
 
@@ -11,15 +12,13 @@ function Details(){
       <div className='instructions'>
         <div>
           <img src="images/present.png" alt="present-image" />
-          Count me in is a simple countdown clock that helps you keep track of all your special holidays, trips, and upcoming events!
-        </div>
+          Welcome to Count Me In, your go-to countdown clock for staying organised and excited about your upcoming special occasions, vacations, and events!         </div>
         <div>
         <img src="images/calendar.png" alt="calendar-image" />
-          Simply, fill in your event date, event category and notes about the event
-        </div>
+        Just input your event date, select its category, and add any personal notes you'd like. </div>
         <div>
         <img src="images/celebrate.png" alt="confetti-png" />
-          Once thats done, simply click generate to begin your event countdown!
+          With a single click, your event countdown begins!
         </div>
       </div>
 

@@ -17,7 +17,9 @@
   border-radius: 10px;
   text-align: center;
   padding: 1rem 1rem;
-  border: 3px solid $light-purple;
+  // border: 3px solid $light-purple;
+  background-color: $light-red;
+  color: $light-beige;
 }
 
 .instructions img{
