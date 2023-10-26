@@ -1,0 +1,27 @@
+
+#details h1{
+  font-size: 3rem;
+  text-align: center;
+}
+
+.instructions{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.instructions div{
+  margin: 1rem;
+  flex: 1;
+  height: auto;
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem 1rem;
+  border: 3px solid $light-purple;
+}
+
+.instructions img{
+  display: block;
+  margin: 1rem auto;
+  max-width: 20%;
+}
