@@ -47,30 +47,30 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
   return(
     <div onSubmit={handleSubmit} id="form">
       <div className="form-content">
-        <h1>Create an event countdown</h1>
+        <h1>Create An Event Countdown</h1>
         <form className="event-form" action="#">
 
           {/* EVENT TITLE */}
-          <label htmlFor="eventTitle">Event title:*</label><br/>
+          <label htmlFor="eventTitle">Event title:<span style={{fontSize: 'x-small'}}>*</span></label><br/>
           <input onChange={handleEventTitle} type="text" value={inputtedTitle} placeholder="Trip to Tokyo" required /><br/>
 
           <div className="date-time">
             {/* EVENT DATE */}
             <div>
-              <label htmlFor="eventDate">Event date:*</label><br/>
+              <label htmlFor="eventDate">Event date:<span style={{fontSize: 'x-small'}}>*</span></label><br/>
               <input onChange={handleEventDate} type="date" value={eventDate} required /><br/>
             </div>
 
             {/* EVENT TIME */}
             <div>
-              <label htmlFor="eventTime">Event time:*</label><br/>
+              <label htmlFor="eventTime">Event time:<span style={{fontSize: 'x-small'}}>*</span></label><br/>
               <input onChange={handleEventTime} type="time" value={eventTime} required /><br/>
             </div>
           </div>
 
-          <label htmlFor="eventType">Event type:*</label><br/>
+          <label htmlFor="eventType">Event type:<span style={{fontSize: 'x-small'}}>*</span></label><br/>
           <select onChange={handleEventType} value={eventType} name="event-type" id="event-type">
-            <option value="" selected>Select an event type</option>
+            <option value="">Select an event type</option>
             <option value="Holiday">Holiday / Vacation</option>
             <option value="Trip">Short trip</option>
             <option value="Birthday">Birthday</option>

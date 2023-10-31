@@ -1,13 +1,15 @@
 
 #details h1{
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: center;
+  font-family: $fresca;
 }
 
 .instructions{
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
+  font-family: $roboto;
 }
 
 .instructions div{

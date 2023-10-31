@@ -6,6 +6,19 @@ import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
 import Countdown from './components/Countdown.jsx';
 
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: [
+      'Fresca&family',
+      'PT+Serif:wght@700&family',
+      'Roboto+Mono&display=swap'
+    ],
+  },
+});
+
+
 
 function App() {
 
@@ -40,7 +53,7 @@ function App() {
     <div className='container'>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='form' element={<Form onEventTitle={handleEventTitle} onEventDate={handleEventDate} onEventTime={handleEventTime} onEventType={handleEventType} onNotes={handleNotes}/>}/>
+        <Route path='form' element={<Form onEventTitle={handleEventTitle} inputtedTitle={inputtedTitle} onEventDate={handleEventDate} eventDate={eventDate} onEventTime={handleEventTime} eventTime={eventTime}  onEventType={handleEventType} eventType={eventType} onNotes={handleNotes} notes={notes}/>}/>
         <Route path='countdown' element={<Countdown inputtedTitle={inputtedTitle} eventDate={eventDate} eventTime={eventTime} eventType={eventType} notes={notes}/>} />
       </Routes>
     </div>
