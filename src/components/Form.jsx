@@ -10,6 +10,10 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
     navigate('/countdown');
   }
 
+  function handleBackToHome(){
+    navigate('/');
+  }
+
   Form.propTypes = {
     onEventTitle: PropTypes.func.isRequired,
     inputtedTitle: PropTypes.string.isRequired,
@@ -46,6 +50,7 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
 
   return(
     <div onSubmit={handleSubmit} id="form">
+      <div onClick={handleBackToHome} className='back-btn'> ↩︎ Back to home</div>
       <div className="form-content">
         <h1>Create An Event Countdown</h1>
         <form className="event-form" action="#">
