@@ -1,10 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
-
-  const [daysLeft, setDaysLeft] = useState('');
 
   const navigateToForm = useNavigate();
 
@@ -28,23 +26,6 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
     month: 'numeric',
     year: 'numeric',
   });
-
-  const daysToGo = useCallback(() => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const dayOfEvent = new Date(eventDate);
-    dayOfEvent.setHours(0, 0, 0, 0);
-
-    const timeDifference = dayOfEvent.getTime() - today.getTime();
-    setDaysLeft(Math.ceil(timeDifference / (1000 * 60 * 60 * 24)));
-  }, [eventDate, setDaysLeft]);
-
-  useEffect(() => {
-    // Calculate the days left when the component is mounted
-    daysToGo();
-  }, [daysToGo]);
-
 
   let countdownBackground;
 
@@ -80,6 +61,46 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
       countdownBackground = 'linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3)), url(https://images.unsplash.com/photo-1623638308715-49498b199bcd?auto=format&fit=crop&q=80&w=1632&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)';
   }
 
+  // COUNTDOWN CLOCK
+
+  const countdownDate = new Date(eventDate).getTime();
+
+  const [hours, setHours] = useState('00');
+  const [minutes, setMinutes] = useState('00');
+  const [seconds, setSeconds] = useState('00');
+  const [days, setDays] = useState('');
+
+  useEffect(() => {
+
+    const updateCountdown = () => {
+
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance >= 0 ){
+        const daysLeft = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hoursLeft = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        // console.log(hoursLeft);
+        const minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        // console.log(minutesLeft);
+        const secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
+        // console.log(secondsLeft);
+
+        setDays(daysLeft);
+        setHours(hoursLeft);
+        setMinutes(minutesLeft);
+        setSeconds(secondsLeft);
+      }
+    };
+    const interval = setInterval(updateCountdown, 1000); // updates every second
+
+    return () => {
+      clearInterval(interval);
+    };
+
+  }, [countdownDate]);
+
+
 
   return(
     <div id="countdown" style={{backgroundImage: `${countdownBackground}`}}>
@@ -87,13 +108,13 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
       <div onClick={handleBackBtn} className='back-btn'> ↩︎ Create another countdown</div>
 
       <h1>{titleCapitalised}</h1>
-      <h2 className='days-left'>{daysLeft} Days left</h2>
+      <h2 className='days-left'>{days} Days left</h2>
       <div className='countdown-values'>
-        <div className='time'>15 <div className='countdown-txt'>Hours</div></div>
+        <div className='time'>{hours} <div className='countdown-txt'>Hours</div></div>
         <div className='colon'>:</div>
-        <div className='time'>45 <div className='countdown-txt'>Minutes</div></div>
+        <div className='time'>{minutes} <div className='countdown-txt'>Minutes</div></div>
         <div className='colon'>:</div>
-        <div className='time'>27 <div className='countdown-txt'>Seconds</div></div>
+        <div className='time'>{seconds} <div className='countdown-txt'>Seconds</div></div>
       </div>
 
       <h2 className='event-date'>Date: {formattedDate}</h2>
