@@ -1,0 +1,66 @@
+
+@media (max-width: 992px){
+
+  // BANNER
+
+  // DETAILS
+
+  .instructions img{
+    max-width: 50%;
+  }
+
+  // FORM
+
+  .form-content{
+    width: 80%;
+    padding-top: 3rem;
+  }
+
+  // COUNTDOWN
+
+  .time, .colon{
+    font-size: 7rem;
+    padding: 0rem 0rem;
+  }
+
+
+}
+
+
+@media (max-width: 767px){
+
+  // BANNER
+
+  .logo{
+    max-width: 80%;
+  }
+
+  // DETAILS
+
+  .instructions{
+    display: block;
+  }
+
+
+  // FORM
+
+  .form-content{
+    width: 90%;
+    padding-top: 3rem;
+  }
+
+  // COUNTDOWN
+
+  #countdown h1{
+    text-align: center;
+  }
+
+  .time, .colon{
+    font-size: 5rem;
+    padding: 0rem 0rem;
+  }
+
+  .countdown-txt{
+    font-size: 1.5rem;
+  }
+}

@@ -26,6 +26,7 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
     month: 'numeric',
     year: 'numeric',
   });
+  // console.log('Formatted date:', formattedDate);
 
   let countdownBackground;
 
@@ -63,12 +64,14 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
 
   // COUNTDOWN CLOCK
 
-  const countdownDate = new Date(eventDate).getTime();
+  const countdownDate = new Date(eventDate + 'T' + eventTime).getTime();
+  // console.log('EVENT DATE:', eventDate);
 
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
   const [days, setDays] = useState('');
+  const [daysLeftText, setDaysLeftText] = useState('');
 
   useEffect(() => {
 
@@ -76,6 +79,7 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
 
       const now = new Date().getTime();
       const distance = countdownDate - now;
+
 
       if (distance >= 0 ){
         const daysLeft = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -90,8 +94,24 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
         setHours(hoursLeft);
         setMinutes(minutesLeft);
         setSeconds(secondsLeft);
+
+        if (daysLeft === 0) {
+          if (hoursLeft === 0 && minutesLeft === 0 && secondsLeft === 0) {
+            setDaysLeftText('Event passed!');
+          } else if (daysLeft === 1) {
+            setDaysLeftText('Day Left');
+            console.log('daysLeft === 1:');
+          } else {
+            setDaysLeftText('Days Left');
+            console.log('firstelse:');
+          }
+        } else {
+          setDaysLeftText('Days Left');
+        }
       }
+
     };
+
     const interval = setInterval(updateCountdown, 1000); // updates every second
 
     return () => {
@@ -102,13 +122,21 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
 
 
 
+  // if(days === 1){
+  //   daysLeftText = 'Day left';
+  // } else if (days < 0){
+  //   daysLeftText = 'Event passed!';
+  // } else {
+  //   daysLeftText = 'Days left';
+  // }
+
   return(
     <div id="countdown" style={{backgroundImage: `${countdownBackground}`}}>
 
       <div onClick={handleBackBtn} className='back-btn'> ↩︎ Create another countdown</div>
 
       <h1>{titleCapitalised}</h1>
-      <h2 className='days-left'>{days} Days left</h2>
+      <h2 className='days-left'>{days} {daysLeftText}</h2>
       <div className='countdown-values'>
         <div className='time'>{hours} <div className='countdown-txt'>Hours</div></div>
         <div className='colon'>:</div>
