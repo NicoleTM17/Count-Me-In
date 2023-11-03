@@ -1,14 +1,8 @@
 import { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
-
-  const navigateToForm = useNavigate();
-
-  function handleBackBtn(){
-    navigateToForm('/form');
-  }
 
   Countdown.propTypes = {
     inputtedTitle: PropTypes.string.isRequired,
@@ -108,7 +102,7 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
   return(
     <div id="countdown" style={{backgroundImage: `${countdownBackground}`}}>
 
-      <div onClick={handleBackBtn} className='back-btn-countdown'> ↩︎ Create another countdown</div>
+      <Link to='/form' style={{color: 'black'}}><div className='back-btn-countdown'> ↩︎ Create another countdown</div></Link>
 
       <h1>{titleCapitalised}</h1>
       <h2 className='days-left'>{days} {daysLeftText}</h2>

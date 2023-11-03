@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime, eventTime, onEventType, eventType, onNotes, notes}){
   const navigate = useNavigate();
@@ -10,9 +11,6 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
     navigate('/countdown');
   }
 
-  function handleBackToHome(){
-    navigate('/');
-  }
 
   Form.propTypes = {
     onEventTitle: PropTypes.func.isRequired,
@@ -49,11 +47,11 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
 
 
   return(
-    <div onSubmit={handleSubmit} id="form">
-      <div onClick={handleBackToHome} className='back-btn-form'> ↩︎ Back to home</div>
+    <div id="form">
+      <Link to='/' style={{color: 'black'}}><div className='back-btn-form'> ↩︎ Back to home</div></Link>
       <div className="form-content">
         <h1>Create An Event Countdown</h1>
-        <form className="event-form" action="#">
+        <form onSubmit={handleSubmit} className="event-form" action="#">
 
           {/* EVENT TITLE */}
           <label htmlFor="eventTitle">Event title:<span style={{fontSize: 'x-small'}}>*</span></label><br/>
@@ -91,7 +89,7 @@ function Form({onEventTitle, inputtedTitle, onEventDate, eventDate, onEventTime,
           <label htmlFor="notes">Add note:</label><br/>
           <textarea onChange={handleNotes} value={notes} name="notes" id="event-notes" cols="35" rows="5" placeholder="Enter text here"></textarea><br/>
 
-          <button className="event-btn">Generate</button>
+          <button className="event-btn" type="submit">Generate</button>
         </form>
 
       </div>
