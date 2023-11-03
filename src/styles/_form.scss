@@ -7,6 +7,23 @@
   display: flex;
 }
 
+.back-btn-form{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border: 1px solid $light-yellow;
+  background-color: $light-yellow;
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  font-family: $PT;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+}
+
+.back-btn-form:hover{
+  opacity: .7;
+}
+
 
 .form-content{
   display: block;

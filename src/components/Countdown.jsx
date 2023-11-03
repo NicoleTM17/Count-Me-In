@@ -26,7 +26,6 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
     month: 'numeric',
     year: 'numeric',
   });
-  // console.log('Formatted date:', formattedDate);
 
   let countdownBackground;
 
@@ -65,7 +64,6 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
   // COUNTDOWN CLOCK
 
   const countdownDate = new Date(eventDate + 'T' + eventTime).getTime();
-  // console.log('EVENT DATE:', eventDate);
 
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
@@ -110,7 +108,7 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
   return(
     <div id="countdown" style={{backgroundImage: `${countdownBackground}`}}>
 
-      <div onClick={handleBackBtn} className='back-btn'> ↩︎ Create another countdown</div>
+      <div onClick={handleBackBtn} className='back-btn-countdown'> ↩︎ Create another countdown</div>
 
       <h1>{titleCapitalised}</h1>
       <h2 className='days-left'>{days} {daysLeftText}</h2>
