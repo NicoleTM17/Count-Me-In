@@ -74,42 +74,29 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
   const [daysLeftText, setDaysLeftText] = useState('');
 
   useEffect(() => {
-
     const updateCountdown = () => {
-
       const now = new Date().getTime();
       const distance = countdownDate - now;
 
-
-      if (distance >= 0 ){
+      if (distance >= 0) {
         const daysLeft = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hoursLeft = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        // console.log(hoursLeft);
         const minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        // console.log(minutesLeft);
         const secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
-        // console.log(secondsLeft);
 
         setDays(daysLeft);
         setHours(hoursLeft);
         setMinutes(minutesLeft);
         setSeconds(secondsLeft);
 
-        if (daysLeft === 0) {
-          if (hoursLeft === 0 && minutesLeft === 0 && secondsLeft === 0) {
-            setDaysLeftText('Event passed!');
-          } else if (daysLeft === 1) {
-            setDaysLeftText('Day Left');
-            console.log('daysLeft === 1:');
-          } else {
-            setDaysLeftText('Days Left');
-            console.log('firstelse:');
-          }
+        if (daysLeft === 1) {
+          setDaysLeftText('Day Left');
         } else {
           setDaysLeftText('Days Left');
         }
+      } else {
+        setDaysLeftText('Event passed!');
       }
-
     };
 
     const interval = setInterval(updateCountdown, 1000); // updates every second
@@ -117,18 +104,8 @@ function Countdown({inputtedTitle, eventDate, eventTime, eventType, notes}){
     return () => {
       clearInterval(interval);
     };
-
   }, [countdownDate]);
 
-
-
-  // if(days === 1){
-  //   daysLeftText = 'Day left';
-  // } else if (days < 0){
-  //   daysLeftText = 'Event passed!';
-  // } else {
-  //   daysLeftText = 'Days left';
-  // }
 
   return(
     <div id="countdown" style={{backgroundImage: `${countdownBackground}`}}>
